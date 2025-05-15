@@ -94,12 +94,15 @@ bool LoRaWANNodeClass::begin(HardwareSerial *serialx, uint8_t band, uint8_t lora
     }
   }
 
-  // Set band: EU or US.
-  if(getBand() != band) {
-    if(!setBand(band)) {
-      return 0;
-    }
-  }
+  // Warning : code is blocking when using some I-NUCLEO-LRWAN1 boards
+  // Expect to be EU868
+
+  // // Set band: EU or US.
+  // if(getBand() != band) {
+  //   if(!setBand(band)) {
+  //     return 0;
+  //   }
+  // }
 
   // Enable duty cycle just in case it was disabled previously.
   if(!setDutyCycle(true)) {
